@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pspost %>
+
+<div>
+  <%= link_to "Edit this pspost", edit_pspost_path(@pspost) %> |
+  <%= link_to "Back to psposts", psposts_path %>
+
+  <%= button_to "Destroy this pspost", @pspost, method: :delete %>
+</div>

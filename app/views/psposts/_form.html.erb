@@ -1,0 +1,33 @@
+<%= form_with(model: pspost) do |form| %>
+  <% if pspost.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pspost.errors.count, "error") %> prohibited this pspost from being saved:</h2>
+
+      <ul>
+        <% pspost.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+<div class="form-group">
+ <%= form.label :psimages %>
+ <%= form.file_field :psimages, multiple: true, class: 'form-control' %>
+</div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,59 @@
+<%= form_with(model: psuser) do |form| %>
+  <% if psuser.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(psuser.errors.count, "error") %> prohibited this pspost from being saved:</h2>
+
+      <ul>
+        <% psuser.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="field">
+    <%= form.label :email %><br />
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :name, class:"form-label" %><br />
+    <%= form.text_field :name, autocomplete: "Nombre" %>
+  </div>
+
+<div class="field">
+    <%= form.label :lastname, class:"form-label" %><br />
+    <%= form.text_field :lastname, autocomplete: "Apellido" %>
+  </div>
+
+<div class="field">
+    <%= form.label :age, class:"form-label" %><br />
+    <%= form.text_field :age, autocomplete: "Edad" %>
+  </div>
+
+<div class="field">
+    <%= f.label :position, class:"form-label" %><br />
+    <%= f.text_field :position, autocomplete: "Cargo" %>
+  </div>
+
+<div class="field">
+    <%= f.label :resume, class:"form-label" %><br />
+    <%= f.text_field :resuume, autocomplete: "Resumen Laboral/Curriculum" %>
+  </div>
+
+  <div class="container">
+  <% f.fields_for :avatar do |image_form| %>
+  <div class="form-group">
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, class:"form-controller" %>
+  </div>
+    <% end %>
+
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

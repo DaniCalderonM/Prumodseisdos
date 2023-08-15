@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+     <%= link_to "EstebanJobs", root_path, class:"navbar-brand tcolor kp" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <li><%= link_to "Inicio", root_path, class:"nav-link tcolor" %> </li>
+          <% if psuser_signed_in? %>
+        <li><%= link_to "Publicaciones", psposts_path, class:"nav-link tcolor" %> </li>
+        <li><%= link_to "Usuarios", psusers_path, class:"nav-link tcolor" %> </li>
+        <% end %>
+        </ul>
+        <ul class="navbar-nav ms-auto ">
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle tcolor text-end" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if psuser_signed_in? %>
+            <% if current_psuser.name %>
+            Hola <%= current_psuser.name %>  
+            <% else %>
+            Hola <%= current_psuser.email %>
+            <% end %>
+            <% if current_psuser.avatar.persisted? %>
+            <%= image_tag current_psuser.avatar, class:"rounded-circle avatar" %>
+            <% end %>
+            <% else %>
+            Inicia sesión
+            <% end %>
+          </a>
+          <ul class="dropdown-menu pff ">
+            <% if psuser_signed_in? %>
+           <li><%= link_to "Editar Perfil", edit_psuser_registration_path, class:"dropdown-item " %></li>
+            <li><%= button_to "Cerrar Sesión", destroy_psuser_session_path, class:"dropdown-item ", method: :delete %></li>
+            <% else %> 
+            <li><%= link_to "Iniciar Sesión", new_psuser_session_path, class:"dropdown-item " %></li>
+            <%# <%= link_to "Registrarme", new_psuser_registration_path, class:"dropdown-item " %>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

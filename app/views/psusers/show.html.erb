@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @psuser %>
+
+<div>
+  <%= link_to "Edit this psuser", edit_psuser_path(@psuser) %> |
+  <%= link_to "Back to psusers", psusers_path %>
+
+  <%= button_to "Destroy this psuser", @psuser, method: :delete %>
+</div>
