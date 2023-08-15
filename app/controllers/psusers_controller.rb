@@ -33,8 +33,8 @@ class PsusersController < ApplicationController
     password_setting(@psuser)
 
     if @psuser.save
-      flash[:notice] = "Successfully created User."
-      redirect_to root_path
+      flash[:notice] = "Usuario creado exitosamente."
+      redirect_to psusers_path
     else
       flash[:alert] = @psuser.errors.full_messages
       render :action => 'new'
@@ -53,37 +53,69 @@ class PsusersController < ApplicationController
 
   # PATCH/PUT /psposts/1 or /psposts/1.json
   def update
-    respond_to do |format|
-      if @psuser.update(psuser_params)
-        format.html { redirect_to psuser_url(@psuser), notice: "Psuser was successfully updated." }
-        format.json { render :show, status: :ok, location: @psuser }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @psuser.errors, status: :unprocessable_entity }
+    @psuser = Psuser.find(params[:id])
+    params[:psuser].delete(:password) if params[:psuser][:password].blank?
+    params[:psuser].delete(:password_confirmation) if params[:psuser][:password].blank? and params[:psuser][:password_confirmation].blank?
+
+    if @psuser.update(psuser_params)
+      flash[:notice] = "Usuario actualizado con exito."
+      redirect_to psusers_path
+    else
+      respond_to do |format|
+        format.html { redirect_to new_psuser_path, alert: @psuser.errors.full_messages }
       end
     end
+    # respond_to do |format|
+    #   if @psuser.update(psuser_params)
+    #     format.html { redirect_to psuser_url(@psuser), notice: "Psuser was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @psuser }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @psuser.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /psposts/1 or /psposts/1.json
   def destroy
-    @psuser.destroy
-
-    respond_to do |format|
-      format.html { redirect_to psuser_url, notice: "Psuser was successfully destroyed." }
-      format.json { head :no_content }
+    @psuser = Psuser.find(params[:id])
+    if @psuser.destroy
+      flash[:notice] = "Usuario Eliminado con exito."
+      redirect_to psusers_path
     end
+
+    # @psuser.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to psuser_url, notice: "Psuser was successfully destroyed." }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_psuser
-      @psuser = Psuser.find(params[:id])
-    end
+    # def set_psuser
+    #   @psuser = Psuser.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def psuser_params
       params.require(:psuser).permit(:email, :name, :lastname, :age, :position, :resume, :avatar, :pspost_ids, psimages: [])
     end
-end
 
-# :sign_in
+    def password_setting(psuser)
+      generated_password = "123456"
+  
+      psuser.password = generated_password
+      psuser.password_confirmation = generated_password
+      generated_password
+    end
+
+    def is_admin?
+      if not current_psuser.admin?
+        respond_to do |format|
+          format.html { redirect_to psposts_path, alert: "Solo los administradores tiene acceso" }
+        end
+      end
+    end
+
+end

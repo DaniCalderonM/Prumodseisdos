@@ -1,0 +1,12 @@
+<h1>Postulaciones</h1>
+<ul>
+ <% @pspost.each do |post| %>
+ <li>
+ <%= post.name %> -
+ <%= post.find_kind_psuser_relation(current_psuser) %>
+ <p>
+ <%= link_to "Mostrar esta publicacion", post %>
+ </p>
+ </li>
+ <% end %>
+</ul>

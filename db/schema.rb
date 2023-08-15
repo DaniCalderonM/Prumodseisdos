@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_13_211730) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_190234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_211730) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "applies", force: :cascade do |t|
+    t.string "kind"
+    t.bigint "psuser_id", null: false
+    t.bigint "pspost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pspost_id"], name: "index_applies_on_pspost_id"
+    t.index ["psuser_id"], name: "index_applies_on_psuser_id"
+  end
+
   create_table "psimages", force: :cascade do |t|
     t.string "psimageable_type", null: false
     t.bigint "psimageable_id", null: false
@@ -55,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_211730) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "psuser_id", null: false
+    t.index ["psuser_id"], name: "index_psposts_on_psuser_id"
   end
 
   create_table "psposts_psusers", id: false, force: :cascade do |t|
@@ -82,4 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_211730) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "applies", "psposts"
+  add_foreign_key "applies", "psusers"
+  add_foreign_key "psposts", "psusers"
 end

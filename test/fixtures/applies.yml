@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  psuser: one
+  pspost: one
+
+two:
+  kind: MyString
+  psuser: two
+  pspost: two

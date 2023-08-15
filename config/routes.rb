@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :psusers, :controller => 'psusers'
   end
+
+  post '/applies', to: 'applies#psuser_apply', as: 'psuser_apply'
+  get '/my_applies', to: 'applies#pspost_with_applies', as: 'my_applies'
   # Defines the root path route ("/")
    root "homes#index"
 end

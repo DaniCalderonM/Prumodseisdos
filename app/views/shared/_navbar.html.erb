@@ -11,6 +11,7 @@
           <% if psuser_signed_in? %>
         <li><%= link_to "Publicaciones", psposts_path, class:"nav-link tcolor" %> </li>
         <li><%= link_to "Usuarios", psusers_path, class:"nav-link tcolor" %> </li>
+        <li><%= link_to 'Tus Postulaciones', my_applies_path, class: "nav-link tcolor" %> </li>
         <% end %>
         </ul>
         <ul class="navbar-nav ms-auto ">
