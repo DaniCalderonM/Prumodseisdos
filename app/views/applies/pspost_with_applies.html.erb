@@ -1,13 +1,13 @@
-<h1><u>Tus Postulaciones</u></h1>
+<h1><u>Mis Postulaciones</u></h1>
 
 <ul class="mt-4">
  <% @pspost.each do |pspost| %>
- <li>
- <u class="ds-1"><%= pspost.title %></u>
+ <li class="fs-4">
+ <u class="fs-3"><%= pspost.title %></u>
  <%# <%= pspost.find_kind_psuser_relation(current_psuser) %>
  <p>
- <%= link_to "Mostrar esta publicacion", pspost, class:"btn btn-dark mt-2" %>
- </p>
+ <%= link_to "Mostrar esta publicacion", pspost, class:"btn btn-success" %>
+</p>
  </li>
  <% end %>
 </ul>

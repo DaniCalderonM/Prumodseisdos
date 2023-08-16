@@ -5,8 +5,10 @@
  <%= render 'applies/applies' %>
  <% end %>
 <div>
+<% if Psuser.first == current_psuser %>
   <%= link_to "Editar esta publicación", edit_pspost_path(@pspost), class:"btn btn-dark mt-3" %> |
   <%= link_to "Volver a publicaciones", psposts_path, class:"btn btn-dark mt-3" %>
 
   <%= button_to "Eliminar esta publicación", @pspost, method: :delete, class:"btn btn-danger mt-4" %>
+  <% end %>
 </div>

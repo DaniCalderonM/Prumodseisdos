@@ -1,12 +1,12 @@
 <div id="<%= dom_id psuser %>">
 
-<div class="card w-75 mb-3">
+<div class="card w-75 mb-4">
   <div class="card-body">
  <% if psuser.avatar.persisted? %>
  <strong>Imagen Perfil:</strong>
- <%= image_tag psuser.avatar, class: "rounded-circle avatarr ms-3" %> 
+ <p><%= image_tag psuser.avatar, class: "rounded-circle avatarr" %> </p>
  <% end %>
-<br>
+
 <strong>Nombre:</strong>
 <%= psuser.name %>
 <br>

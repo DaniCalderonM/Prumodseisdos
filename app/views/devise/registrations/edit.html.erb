@@ -37,7 +37,7 @@
   <div class="container">
   <% f.fields_for :avatar do |image_form| %>
   <div class="form-group">
-  <%= f.label :avatar "Imagen de Perfil", %>
+  <%= f.label :avatar, "Imagen de Perfil" %>
   <%= f.file_field :avatar, class:"form-controller" %>
   </div>
     <% end %>
@@ -57,7 +57,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "Confirmar Contraseña", %><br />
+    <%= f.label :password_confirmation, "Confirmar Contraseña" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "Nueva Contraseña" %>
   </div>
 
@@ -67,7 +67,7 @@
   </div>
 
 <div class="field">
-    <%= f.label :avatar, "Imagen de perfil", class:"form-label mt-3" %><br />
+    <%= f.label :avatar , "Imagen de perfil", class:"form-label mt-3" %><br />
     <%= f.file_field :avatar, autocomplete: "avatar", class:"form-control" %>
   </div>
 
