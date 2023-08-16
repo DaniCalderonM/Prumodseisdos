@@ -1,7 +1,9 @@
 class PspostsController < ApplicationController
   before_action :set_pspost, only: %i[ show edit update destroy ]
   before_action :authenticate_psuser!
-  
+  before_action only: [ :create, :new, :destroy, :edit, :update ] do
+    authorize_request(["admin"])
+  end
   # GET /psposts or /psposts.json
   def index
     @psposts = Pspost.all
@@ -9,6 +11,7 @@ class PspostsController < ApplicationController
 
   # GET /psposts/1 or /psposts/1.json
   def show
+    mark_notifications_as_read
   end
 
   # GET /psposts/new
@@ -23,7 +26,6 @@ class PspostsController < ApplicationController
   # POST /psposts or /psposts.json
   def create
     @pspost = Pspost.new(pspost_params)
-
     respond_to do |format|
       if @pspost.save
         format.html { redirect_to pspost_url(@pspost), notice: "Pspost was successfully created." }
@@ -66,6 +68,15 @@ class PspostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pspost_params
-      params.require(:pspost).permit(:title, :description, :psuser_ids, psimages: [])
+      params.require(:pspost).permit(:title, :description, psimages: [])
     end
+
+    def mark_notifications_as_read
+      if current_psuser
+        notifications_to_mark_as_read = @pspost.notifications_as_pspost.where(recipient: current_psuser)
+        notifications_to_mark_as_read.update_all(read_at: Time.zone.now)
+      end
+    end
+
+
 end

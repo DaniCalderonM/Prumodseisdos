@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_190234) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_215612) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,12 +44,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_190234) do
 
   create_table "applies", force: :cascade do |t|
     t.string "kind"
-    t.bigint "psuser_id", null: false
+    t.bigint "psuser_id"
     t.bigint "pspost_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pspost_id"], name: "index_applies_on_pspost_id"
     t.index ["psuser_id"], name: "index_applies_on_psuser_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
   create_table "psimages", force: :cascade do |t|
@@ -65,13 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_190234) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "psuser_id", null: false
+    t.bigint "psuser_id"
     t.index ["psuser_id"], name: "index_psposts_on_psuser_id"
-  end
-
-  create_table "psposts_psusers", id: false, force: :cascade do |t|
-    t.bigint "psuser_id", null: false
-    t.bigint "pspost_id", null: false
   end
 
   create_table "psusers", force: :cascade do |t|

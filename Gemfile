@@ -80,3 +80,5 @@ gem "sassc-rails", "~> 2.1"
 gem "activestorage", "~> 7.0"
 
 gem "aws-sdk-s3", "~> 1.132"
+
+gem "noticed", "~> 1.6"

@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @pspost %>
-
+<% if Psuser.first != current_psuser %>
+ <%= render 'applies/applies' %>
+ <% end %>
 <div>
   <%= link_to "Edit this pspost", edit_pspost_path(@pspost) %> |
   <%= link_to "Back to psposts", psposts_path %>

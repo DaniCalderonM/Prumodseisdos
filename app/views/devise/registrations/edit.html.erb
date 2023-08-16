@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar Perfil</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -16,6 +16,21 @@
 <div class="field">
     <%= f.label :lastname, class:"form-label" %><br />
     <%= f.text_field :lastname, autocomplete: "Apellido" %>
+  </div>
+
+<div class="field">
+    <%= f.label :age, class:"form-label" %><br />
+    <%= f.text_field :age, autocomplete: "Edad" %>
+  </div>
+
+<div class="field">
+    <%= f.label :position, class:"form-label" %><br />
+    <%= f.text_field :position, autocomplete: "Cargo" %>
+  </div>
+
+<div class="field">
+    <%= f.label :resume, class:"form-label" %><br />
+    <%= f.text_field :resume, autocomplete: "Resumen Laboral/Curriculum" %>
   </div>
 
   <div class="container">

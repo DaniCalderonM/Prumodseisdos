@@ -4,8 +4,9 @@ class Psuser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :psposts, through: :applies
          has_many :applies
+         has_many :psposts, through: :applies
          has_one_attached :avatar
+         has_many :notifications, as: :recipient, dependent: :destroy
          enum :role, [:normal_psuser, :admin]
 end

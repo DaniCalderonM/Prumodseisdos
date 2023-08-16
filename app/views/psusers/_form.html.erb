@@ -33,20 +33,20 @@
   </div>
 
 <div class="field">
-    <%= f.label :position, class:"form-label" %><br />
-    <%= f.text_field :position, autocomplete: "Cargo" %>
+    <%= form.label :position, class:"form-label" %><br />
+    <%= form.text_field :position, autocomplete: "Cargo" %>
   </div>
 
 <div class="field">
-    <%= f.label :resume, class:"form-label" %><br />
-    <%= f.text_field :resuume, autocomplete: "Resumen Laboral/Curriculum" %>
+    <%= form.label :resume, class:"form-label" %><br />
+    <%= form.text_field :resume, autocomplete: "Resumen Laboral/Curriculum" %>
   </div>
 
   <div class="container">
-  <% f.fields_for :avatar do |image_form| %>
+  <% form.fields_for :avatar do |image_form| %>
   <div class="form-group">
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar, class:"form-controller" %>
+  <%= form.label :avatar %>
+  <%= form.file_field :avatar, class:"form-controller" %>
   </div>
     <% end %>
 

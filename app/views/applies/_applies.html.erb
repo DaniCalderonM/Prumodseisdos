@@ -1,8 +1,8 @@
 <div class="container">
  <ul>
  <% Apply.kinds.each do |kind| %>
- <li><%= button_to "#{kind}", psuser_apply_path(pspost_id: @pspost.id, kind: kind),
-method: :post %></li>
+ <%= button_to "#{kind}", psuser_apply_path(pspost_id: @pspost.id, kind: kind),
+method: :post, class:"btn btn-dark col-2" %>
  <% end %>
  </ul>
 </div>

@@ -10,13 +10,18 @@
           <li><%= link_to "Inicio", root_path, class:"nav-link tcolor" %> </li>
           <% if psuser_signed_in? %>
         <li><%= link_to "Publicaciones", psposts_path, class:"nav-link tcolor" %> </li>
+        <% if Psuser.first == current_psuser %>
         <li><%= link_to "Usuarios", psusers_path, class:"nav-link tcolor" %> </li>
+        <% end %>
+        <% if Psuser.first != current_psuser %>
         <li><%= link_to 'Tus Postulaciones', my_applies_path, class: "nav-link tcolor" %> </li>
+          <% end %>
         <% end %>
         </ul>
         <ul class="navbar-nav ms-auto ">
         <li class="nav-item dropdown ">
           <a class="nav-link dropdown-toggle tcolor text-end" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            
             <% if psuser_signed_in? %>
             <% if current_psuser.name %>
             Hola <%= current_psuser.name %>  
@@ -29,6 +34,7 @@
             <% else %>
             Inicia sesión
             <% end %>
+            
           </a>
           <ul class="dropdown-menu pff ">
             <% if psuser_signed_in? %>
@@ -39,6 +45,7 @@
             <%# <%= link_to "Registrarme", new_psuser_registration_path, class:"dropdown-item " %>
             <% end %>
           </ul>
+          <%= render 'layouts/notifications' %>
         </li>
       </ul>
     </div>

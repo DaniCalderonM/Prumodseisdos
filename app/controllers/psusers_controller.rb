@@ -99,7 +99,7 @@ class PsusersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def psuser_params
-      params.require(:psuser).permit(:email, :name, :lastname, :age, :position, :resume, :avatar, :pspost_ids, psimages: [])
+      params.require(:psuser).permit(:email, :name, :lastname, :age, :position, :resume, :avatar, psimages: [])
     end
 
     def password_setting(psuser)

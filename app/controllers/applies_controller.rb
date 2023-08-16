@@ -11,8 +11,8 @@ class AppliesController < ApplicationController
         @new_apply = Apply.new(psuser_id: @psuser.id, pspost_id: @pspost.id, kind: params[:kind])
         respond_to do |format|
         if @new_apply.save!
-        format.html { redirect_to pspost_path(@pspost), notice: "#{current_psuser.name} ha señalado que #{@new_apply.kind}
-       a la publición" }
+        format.html { redirect_to pspost_path(@pspost), notice: "#{current_psuser.name} ha dado a #{@new_apply.kind}
+       en está publicación" }
         else
         format.html { redirect_to pspost_path(@pspost), status: :unprocessable_entity }
         end
