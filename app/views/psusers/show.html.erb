@@ -3,8 +3,8 @@
 <%= render @psuser %>
 
 <div>
-  <%= link_to "Edit this psuser", edit_psuser_path(@psuser) %> |
-  <%= link_to "Back to psusers", psusers_path %>
+  <%= link_to "Editar este usuario", edit_psuser_path(@psuser), "btn btn-dark mt-3" %> |
+  <%= link_to "Volver a usuarios", psusers_path, "btn btn-dark mt-3" %>
 
-  <%= button_to "Destroy this psuser", @psuser, method: :delete %>
+  <%= button_to "Eliminar este usuario", @psuser, method: :delete, "btn btn-danger mt-4" %>
 </div>

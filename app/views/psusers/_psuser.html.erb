@@ -1,7 +1,11 @@
 <div id="<%= dom_id psuser %>">
 
-<strong>Imagen Perfil:</strong>
-<%= psuser.avatar %>
+<div class="card w-75 mb-3">
+  <div class="card-body">
+ <% if psuser.avatar.persisted? %>
+ <strong>Imagen Perfil:</strong>
+ <%= image_tag psuser.avatar, class: "rounded-circle avatarr ms-3" %> 
+ <% end %>
 <br>
 <strong>Nombre:</strong>
 <%= psuser.name %>
@@ -17,6 +21,11 @@
 <br>
 <strong>Resumen Laboral/Curriculum:</strong>
 <%= psuser.resume %>
+  </div>
+</div>
+
+
+
 
  
 </div>

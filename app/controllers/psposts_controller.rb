@@ -28,7 +28,7 @@ class PspostsController < ApplicationController
     @pspost = Pspost.new(pspost_params)
     respond_to do |format|
       if @pspost.save
-        format.html { redirect_to pspost_url(@pspost), notice: "Pspost was successfully created." }
+        format.html { redirect_to pspost_url(@pspost), notice: "La publicación fue creada con exito." }
         format.json { render :show, status: :created, location: @pspost }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class PspostsController < ApplicationController
   def update
     respond_to do |format|
       if @pspost.update(pspost_params)
-        format.html { redirect_to pspost_url(@pspost), notice: "Pspost was successfully updated." }
+        format.html { redirect_to pspost_url(@pspost), notice: "La publicación se actualizo con exito." }
         format.json { render :show, status: :ok, location: @pspost }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class PspostsController < ApplicationController
     @pspost.destroy
 
     respond_to do |format|
-      format.html { redirect_to psposts_url, notice: "Pspost was successfully destroyed." }
+      format.html { redirect_to psposts_url, notice: "La publicación fue eliminada con exito." }
       format.json { head :no_content }
     end
   end

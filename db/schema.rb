@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_215612) do
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
     t.bigint "recipient_id", null: false
-    t.string "type", null: false
+    t.string "type"
     t.jsonb "params"
     t.datetime "read_at"
     t.datetime "created_at", null: false

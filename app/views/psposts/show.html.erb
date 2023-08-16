@@ -5,8 +5,8 @@
  <%= render 'applies/applies' %>
  <% end %>
 <div>
-  <%= link_to "Edit this pspost", edit_pspost_path(@pspost) %> |
-  <%= link_to "Back to psposts", psposts_path %>
+  <%= link_to "Editar esta publicación", edit_pspost_path(@pspost), class:"btn btn-dark mt-3" %> |
+  <%= link_to "Volver a publicaciones", psposts_path, class:"btn btn-dark mt-3" %>
 
-  <%= button_to "Destroy this pspost", @pspost, method: :delete %>
+  <%= button_to "Eliminar esta publicación", @pspost, method: :delete, class:"btn btn-danger mt-4" %>
 </div>

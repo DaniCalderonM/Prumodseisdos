@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Ofertas Laborales</h1>
+<h1><u>Ofertas Laborales</u></h1>
 
 
 
-<div class=" mb-3 text-center ">
+<div class=" mb-3 text-center">
 <% if Psuser.first == current_psuser %>
 <%= link_to "Sube una nueva Publicación", new_pspost_path, class: "btn btn-success" %>
 <% end %>
@@ -15,7 +15,7 @@
   <% @psposts.each do |pspost| %>
     <%= render pspost %>
     <p>
-      <%= link_to "Ingresar a esta publicacion", pspost, class:"btn btn-dark" %>
+      <%= link_to "Ingresar a esta publicacion", pspost, class:"btn btn-primary mt-2" %>
     </p>
   <% end %>
  
