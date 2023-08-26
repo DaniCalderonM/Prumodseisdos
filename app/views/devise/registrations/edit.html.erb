@@ -1,4 +1,4 @@
-<div class="bg-light p-2 text-dark bg-opacity-75">
+<div class="bg-light p-2 text-dark col-8 text-center bg-opacity-75">
 <h2><u>Editar Perfil</u></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -71,7 +71,7 @@
     <%= f.file_field :avatar, autocomplete: "avatar", class:"form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="actions mt-2 mb-2">
     <%= f.submit "Actualizar" %>
   </div>
 <% end %>
