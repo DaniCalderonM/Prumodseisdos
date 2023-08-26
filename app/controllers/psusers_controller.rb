@@ -9,6 +9,7 @@ class PsusersController < ApplicationController
 
   # GET /psposts/1 or /psposts/1.json
   def show
+    @psuser = Psuser.find(params[:id])
   end
 
   # GET /psposts/new

@@ -14,10 +14,10 @@
 
 <div id="psusers">
 
-  <% @psusers.each do |psusers| %>
-    <%= render psusers %>
+  <% @psusers.each do |psuser| %>
+    <%= render psuser %>
     <p>
-      <%# <% link_to "Mostrar esté usuario", psuser_path, class:"btn btn-dark" %>
+        <%= link_to "Mostrar esté usuario", psuser, class:"btn btn-dark" %>
     </p>
   <% end %>
  
