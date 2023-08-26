@@ -18,38 +18,29 @@
 
 
   <div class="field">
-    <%= form.label :name, "Nombre", class:"form-label" %><br />
+    <%= form.label :name, "Nombre" %><br />
     <%= form.text_field :name, autocomplete: "Nombre" %>
   </div>
 
 <div class="field">
-    <%= form.label :lastname, "Apellido", class:"form-label" %><br />
+    <%= form.label :lastname, "Apellido" %><br />
     <%= form.text_field :lastname, autocomplete: "Apellido" %>
   </div>
 
 <div class="field">
-    <%= form.label :age, "Edad", class:"form-label" %><br />
+    <%= form.label :age, "Edad" %><br />
     <%= form.text_field :age, autocomplete: "Edad" %>
   </div>
 
 <div class="field">
-    <%= form.label :position, "Cargo", class:"form-label" %><br />
+    <%= form.label :position, "Cargo" %><br />
     <%= form.text_field :position, autocomplete: "Cargo" %>
   </div>
 
 <div class="field">
-    <%= form.label :resume, "Resumen Laboral/Curriculum", class:"form-label" %><br />
+    <%= form.label :resume, "Resumen Laboral/Curriculum" %><br />
     <%= form.text_field :resume, autocomplete: "Resumen Laboral/Curriculum" %>
   </div>
-
-  <div class="container">
-  <% form.fields_for :avatar do |image_form| %>
-  <div class="form-group">
-  <%= form.label :avatar, "Imagen de Perfil" %>
-  <%= form.file_field :avatar, class:"form-controller" %>
-  </div>
-    <% end %>
-
 
 
   <div>

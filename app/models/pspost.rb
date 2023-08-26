@@ -1,7 +1,7 @@
 class Pspost < ApplicationRecord
-    belongs_to :psusers, optional: true
+    belongs_to :psuser, optional: true
     has_many :applies, dependent: :destroy
-    has_many :psusers, through: :applies
+    has_many :psusers, through: :applies, dependent: :destroy
     
     has_many_attached :psimages
 
